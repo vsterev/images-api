@@ -64,7 +64,7 @@ module.exports = {
       const { name } = req.body;
       const imageExists = await imageModel.findOne({ filename: name });
       if (!imageExists) {
-        return res.status(202).json(`image ${name} not exists`);
+        return res.status(202).json({message: `image ${name} not exists`});
       }
       const deleteImage = fs.promises.unlink(imagesPath + name);
       const deleteThumb = fs.promises.unlink(imagesPath + "thumb-" + name);
