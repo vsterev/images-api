@@ -1,4 +1,4 @@
-## Image API
+## Images API
 
 ### MYX back-end task
 
@@ -14,10 +14,10 @@ Rest API that organizes work with photos. It has the following main functionalit
 
 ```bash
 yarn install
-> incase using npm
+<!-- incase using npm -->
 npm install
 mkdir uploads
-// if doesn't exists to create folder where it will be saved all uploaded pictures
+<!-- if folder "uploads" not exists to create folder where it will be saved all uploaded pictures -->
 ```
 
 <b>to run </b>
@@ -25,7 +25,7 @@ mkdir uploads
 ```bash
 cd images-api
 yarn start
-// incase using npm
+<!-- incase using npm -->
 npm run start
 ```
 
