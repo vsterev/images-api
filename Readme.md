@@ -42,11 +42,11 @@ start application on port 4000
 ### Examples
 
 1.<p><b> upload picture</b></p>
-post request to http://localhost:4000/images/upload
-use multipart/form data encoding, the key should be named 'image'
+post request to http://localhost:4000/images/upload <br>
+use multipart/form data encoding, the key should be named 'image' <br>
 ![insomnia](screen-upload.png)
 
-successfully response:
+successfully response: <br>
 status - 200
 
 ```json
@@ -66,9 +66,9 @@ status - 200
 ```
 
 2. <p><b>search and retrieve pictures</b></p>
-   post request to http://localhost:4000/images/search
-   Content-Type - application/json
-   <b>parameters in body request:</b>
+   post request to http://localhost:4000/images/search <br>
+   Content-Type - application/json <br>
+   <b>parameters in body request:</b> <br>
 
 - latitudeMin - number optional,
 - latitudeMax - number optional,
@@ -77,7 +77,7 @@ status - 200
   > if you don't send any of the above parameters you will get a response for all records
 - archive - boolean if is set true receive zipped file with all images in it, if is set to false, receive an array of images paths
 
-response staus if image doesn't exists - 404
+response staus if image doesn't exists - 404 <br>
 successfully response status - 200
 
 - this request will initialized searching by latitude and will send all founded images as archive in zip format
@@ -110,9 +110,9 @@ successfully response status - 200
 }
 ```
 
-3.<p><b> delete picture</b></p>
-delete request to http://localhost:4000/images/delete
-Content-Type - application/json
+3.<<b> delete picture</b>
+delete request to http://localhost:4000/images/delete <br>
+Content-Type - application/json <br>
 
 - request
 
@@ -120,7 +120,7 @@ Content-Type - application/json
 { "name": "1670150531413-DJI_0845.JPG" }
 ```
 
-successfully response:
+successfully response: <br>
 status 200
 
 ```json
@@ -129,7 +129,7 @@ status 200
 }
 ```
 
-successfully response:
+successfully response: <br>
 status 202
 
 ```json
