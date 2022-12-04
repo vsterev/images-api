@@ -17,7 +17,7 @@ yarn install
 > incase using npm
 npm install
 mkdir uploads
-> if doesn't exists to create folder where it will be saved all uploaded pictures
+// if doesn't exists to create folder where it will be saved all uploaded pictures
 ```
 
 <b>to run </b>
@@ -25,7 +25,7 @@ mkdir uploads
 ```bash
 cd images-api
 yarn start
-> incase using npm
+// incase using npm
 npm run start
 ```
 
@@ -41,12 +41,13 @@ start application on port 4000
 
 ### Examples
 
-1. upload picture
-   post request to http://localhost:4000/images/upload
-   use multipart/form data encoding, the key should be named 'image'
-   ![insomnia](screen-upload.png)
+1.<p><b> upload picture</b></p>
+post request to http://localhost:4000/images/upload
+use multipart/form data encoding, the key should be named 'image'
+![insomnia](screen-upload.png)
 
 successfully response:
+status - 200
 
 ```json
 {
@@ -64,7 +65,7 @@ successfully response:
 }
 ```
 
-2. search and retrieve pictures
+2. <p><b>search and retrieve pictures</b></p>
    post request to http://localhost:4000/images/search
    Content-Type - application/json
    <b>parameters in body request:</b>
@@ -76,7 +77,10 @@ successfully response:
   > if you don't send any of the above parameters you will get a response for all records
 - archive - boolean if is set true receive zipped file with all images in it, if is set to false, receive an array of images paths
 
-* this request will initialized searching by latitude and will send all founded images as archive in zip format
+response staus if image doesn't exists - 404
+successfully response status - 200
+
+- this request will initialized searching by latitude and will send all founded images as archive in zip format
 
 ```json
 {
@@ -106,26 +110,30 @@ successfully response:
 }
 ```
 
-3. delete picture
-   delete request to http://localhost:4000/images/delete
-   Content-Type - application/json
+3.<p><b> delete picture</b></p>
+delete request to http://localhost:4000/images/delete
+Content-Type - application/json
 
 - request
 
 ```json
 { "name": "1670150531413-DJI_0845.JPG" }
 ```
+
 successfully response:
 status 200
+
 ```json
 {
-	"message": "File 1670150531413-DJI_0845.JPG is deleted."
+  "message": "File 1670150531413-DJI_0845.JPG is deleted."
 }
 ```
+
 successfully response:
 status 202
+
 ```json
 {
-	"message": "image 1670150531413-DJI_08451.JPG not exists"
+  "message": "image 1670150531413-DJI_08451.JPG not exists"
 }
 ```
