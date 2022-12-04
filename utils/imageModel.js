@@ -21,10 +21,10 @@ const imageSchema = new mongoose.Schema({
     required: true,
   },
   latitude: {
-    type: String,
+    type: Number
   },
   longitude: {
-    type: String,
+    type: Number,
   },
   inputDate: {
     type: Date,
