@@ -55,7 +55,7 @@ module.exports = {
         }
         return searchObj;
       };
-
+      // it is well to make pagenation, but it is not mentioned as requirements in the task 
       const images = await imageModel.find(searchStr()).lean();
 
       if (images.length === 0) {
@@ -79,13 +79,11 @@ module.exports = {
         return res.end(zipFileContents);
       }
 
-      const filenames = images.reduce((accu, curr) => {
-        return [...accu, imagesPath + curr.filename, imagesPath + `thumb-${curr.filename}`];
+      const fileNames = images.reduce((accu, curr) => {
+        return [...accu, curr.filename,`thumb-${curr.filename}`];
       }, []);
 
-      res.status(200).json({ filenames });
-      //   res.setHeader("Content-Disposition", "attachment; filename=jpg");
-      //   res.sendFile(imagesPath + "vasko.jpg");
+      res.status(200).json({ fileNames });
     },
   },
   delete: {

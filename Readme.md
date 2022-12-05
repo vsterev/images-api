@@ -110,7 +110,7 @@ status - 500
 
 response staus if image doesn't exists - 404 <br>
 ```json
-{ "error": "No images found" })
+{ "error": "No images found" }
 ```
 
 successfully response status - 200
@@ -126,7 +126,7 @@ successfully response status - 200
 ```
 
 - this request will searched by latitude and longitude and will return array of paths to images
-
+request:
 ```json
 {
   "latitudeMin": 19.9517,
@@ -136,15 +136,30 @@ successfully response status - 200
   "archive": false
 }
 ```
+response:
+status - 200
+```json
+{
+	"fileNames": [
+		"1670155698465-DJI_0848.JPG",
+		"thumb-1670155698465-DJI_0848.JPG",
+		"1670155705035-DJI_0852.JPG",
+		"thumb-1670155705035-DJI_0852.JPG",
+		"1670189886898-DJI_0847.JPG",
+		"thumb-1670189886898-DJI_0847.JPG"
+	]
+}
 
-- this request will retun all saved images in zip archive
+```
+
+- this request will return all saved images in zip archive
 
 ```json
 {
   "archive": true
 }
 ```
-
+status - 200
 when "archive: true" you will receive a response - one zip file that will be contained all images and their thumbnails
 ![insomnia](screen-download.png)
 
