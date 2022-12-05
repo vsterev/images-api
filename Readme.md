@@ -4,7 +4,7 @@
 
 Rest API that organizes work with photos. It has the following main functionalities:
 
-1. uploading photos, during this process is created a thumbnail, the longitude and latitude coordinates of the photo are recognized from EXIP parameters
+1. uploading photos, during this process is created a thumbnail, the longitude and latitude GPS coordinates of the photo are recognized from meta EXIF information parameters
 2. search by specified criteria with the option to download all photos in a zip file or to receive only the paths to them
 3. delete photo, the path to it is received as a response from the search method
 
@@ -108,8 +108,10 @@ successfully response status - 200
   "archive": true
 }
 ```
+when the parameter "archive: true" you will receive as response one zip file that will be contained all images and their thumbnails 
+![insomnia](screen-download.png)
 
-3.<<b> delete picture</b>
+3.<b> delete picture</b>
 delete request to http://localhost:4000/delete <br>
 Content-Type - application/json <br>
 
