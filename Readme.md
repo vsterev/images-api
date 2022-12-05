@@ -14,10 +14,10 @@ Rest API that organizes work with photos. It has the following main functionalit
 
 ```bash
 yarn install
-<!-- incase using npm -->
+<sup> incase using npm </sup>
 npm install
 mkdir uploads
-<!-- if folder "uploads" not exists to create folder where it will be saved all uploaded pictures -->
+<sup> if folder "uploads" not exists to create folder where it will be saved all uploaded pictures </sup>
 ```
 
 <b>to run </b>
@@ -74,7 +74,7 @@ status - 200
 - longitudeMin - number optional,
 - longitudeMax - number optional,
   > if you don't send any of the above parameters you will get a response for all records
-- archive - boolean if is set true receive zipped file with all images in it, if is set to false, receive an array of images paths
+- archive - boolean if is set to true receive zipped file with all images in it, if is set to false, receive an array of images paths
 
 response staus if image doesn't exists - 404 <br>
 successfully response status - 200
