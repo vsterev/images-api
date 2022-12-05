@@ -1,10 +1,9 @@
 const app = require("express")();
 const config = require("./config");
-const routes = require("./routes");
 const express = require("express");
 const mongoose = require("mongoose");
-const imagesController = require("./controllers/images");
-const { Router } = require("express");
+const functions = require("./utils/functions");
+const upload = require("./utils/upload");
 
 mongoose
   .connect(config.dataBaseUrl, {
@@ -14,9 +13,10 @@ mongoose
   .then(() => {
     app.use(express.json());
     app.use(express.urlencoded({ extended: true })); //to recognize req.body in post request
-    app.use("/images", routes.images);
-    app.post("/search", imagesController.post.search);
-
+    app.use('/uploads', express.static('./uploads'));
+    app.post("/search", functions.post.search);
+    app.post("/upload", upload, functions.post.upload);
+    app.delete("/delete", functions.delete.image);
     app.use(function (err, req, res, next) {
       console.error(err);
     });

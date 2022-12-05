@@ -1,5 +1,5 @@
 node_modules/
-uploads/
+# uploads/
 stage.js
 .DS_Store
 package-lock.json

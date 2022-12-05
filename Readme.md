@@ -42,7 +42,7 @@ start application on port 4000
 ### Examples
 
 1.<p><b> upload picture</b></p>
-post request to http://localhost:4000/images/upload <br>
+post request to http://localhost:4000/upload <br>
 use multipart/form data encoding, the key should be named 'image' <br>
 ![insomnia](screen-upload.png)
 
@@ -64,9 +64,8 @@ status - 200
   }
 }
 ```
-
 2. <p><b>search and retrieve pictures</b></p>
-   post request to http://localhost:4000/images/search <br>
+   post request to http://localhost:4000/search <br>
    Content-Type - application/json <br>
    <b>parameters in body request:</b> <br>
 
@@ -111,7 +110,7 @@ successfully response status - 200
 ```
 
 3.<<b> delete picture</b>
-delete request to http://localhost:4000/images/delete <br>
+delete request to http://localhost:4000/delete <br>
 Content-Type - application/json <br>
 
 - request
