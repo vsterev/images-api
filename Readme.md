@@ -76,6 +76,13 @@ status - 200
   }
 }
 ```
+if image with the same name already exists receive response <br>
+status - 202
+```bash
+{
+	"message": "image with name 1 (14).JPG already exists"
+}
+```
 
 2. <p><b>search and retrieve pictures</b></p>
    post request to http://localhost:4000/search <br>
