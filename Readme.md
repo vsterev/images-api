@@ -10,6 +10,8 @@ Rest API that organizes work with photos. It has the following main functionalit
 
 ### Installation and Running
 
+Requires a working MongoDB on port 27017
+
 <b>to install</b>
 
 ```bash
@@ -41,19 +43,19 @@ in case using npm
 npm run start
 ```
 
-start application on port 4000
+Application will run on port 4000 !
 
 ### Dependencies
 
 - MongoDB json collection to handle information about uploaded pictures
 - multer to handle multipart/form-data by uploading files
 - sharp transforming pictures to thumbnails
-- express-zip to make zip archive from pictures and send it back via API
+- adm-zip to make zip archive from pictures and send it back via API without saving to server
 - exifr to read EXIF information from uploaded pictures
 
 ### Examples
 
-1.<p><b> upload picture</b></p>
+1.<b> Upload picture</b>
 post request to http://localhost:4000/upload <br>
 use multipart/form data encoding, the key should be named 'image' <br>
 ![insomnia](screen-upload.png)
@@ -63,28 +65,38 @@ status - 200
 
 ```json
 {
-  "error": null,
-  "response": {
-    "fieldname": "image",
-    "originalname": "DJI_0852.JPG",
-    "encoding": "7bit",
-    "mimetype": "image/jpeg",
-    "destination": "/home/vasil/git/image-api/uploads/",
-    "filename": "1670155705035-DJI_0852.JPG",
-    "path": "/home/vasil/git/image-api/uploads/1670155705035-DJI_0852.JPG",
-    "size": 7822267
+  "info": {
+    "response": {
+      "fieldname": "image",
+      "originalname": "DJI_0852.JPG",
+      "encoding": "7bit",
+      "mimetype": "image/jpeg",
+      "destination": "/home/vasil/git/image-api/uploads/",
+      "filename": "1670155705035-DJI_0852.JPG",
+      "path": "/home/vasil/git/image-api/uploads/1670155705035-DJI_0852.JPG",
+      "size": 7822267
+    }
   }
 }
 ```
+
 if image with the same name already exists receive response <br>
-status - 202
-```bash
+status - 400
+
+```json
 {
-	"message": "image with name 1 (14).JPG already exists"
+  "error": "Image with name 1 (14).JPG already exists"
 }
 ```
 
-2. <p><b>search and retrieve pictures</b></p>
+if it is a problem during image manipulation
+status - 500
+
+```json
+{ "error": "Error during uploading process" }
+```
+
+2. <b>Search and retrieve pictures</b>
    post request to http://localhost:4000/search <br>
    Content-Type - application/json <br>
    <b>parameters in body request:</b> <br>
@@ -97,6 +109,10 @@ status - 202
 - archive - boolean if is set to true receive zipped file with all images in it, if is set to false, receive an array of images paths
 
 response staus if image doesn't exists - 404 <br>
+```json
+{ "error": "No images found" })
+```
+
 successfully response status - 200
 
 - this request will initialized searching by latitude and will send all founded images as archive in zip format
@@ -132,7 +148,7 @@ successfully response status - 200
 when "archive: true" you will receive a response - one zip file that will be contained all images and their thumbnails
 ![insomnia](screen-download.png)
 
-3.<b> delete picture</b>
+3.<b> Delete picture</b>
 delete request to http://localhost:4000/delete <br>
 Content-Type - application/json <br>
 
@@ -143,7 +159,7 @@ Content-Type - application/json <br>
 ```
 
 successfully response: <br>
-status 200
+status - 200
 
 ```json
 {
@@ -152,10 +168,17 @@ status 200
 ```
 
 successfully response: <br>
-status 202
+status - 400
 
 ```json
 {
-  "message": "image 1670150531413-DJI_08451.JPG not exists"
+  "message": "Image 1670150531413-DJI_08451.JPG not exists"
 }
+```
+
+error during delete: <br>
+status - 500
+
+```json
+{ "error": "Could not delete file Image 1670150531413-DJI_08451.JPG" }
 ```

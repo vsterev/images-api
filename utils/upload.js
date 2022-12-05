@@ -1,5 +1,5 @@
 const multer = require("multer");
-const {imagesPath} = require('../config')
+const { imagesPath } = require("../config");
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, imagesPath);
@@ -8,5 +8,7 @@ const storage = multer.diskStorage({
     cb(null, Date.now() + "-" + file.originalname);
   },
 });
+
 const upload = multer({ storage: storage });
+
 module.exports = upload.single("image");
