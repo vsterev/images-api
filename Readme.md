@@ -14,10 +14,18 @@ Rest API that organizes work with photos. It has the following main functionalit
 
 ```bash
 yarn install
-<sup> incase using npm </sup>
+```
+
+in case using npm
+
+```bash
 npm install
+```
+
+if folder uploads doesn't exists, create it using
+
+```bash
 mkdir uploads
-<sup> if folder "uploads" not exists to create folder where it will be saved all uploaded pictures </sup>
 ```
 
 <b>to run </b>
@@ -25,7 +33,11 @@ mkdir uploads
 ```bash
 cd images-api
 yarn start
-<!-- incase using npm -->
+```
+
+in case using npm
+
+```bash
 npm run start
 ```
 
@@ -34,7 +46,7 @@ start application on port 4000
 ### Dependencies
 
 - MongoDB json collection to handle information about uploaded pictures
-- multer to handle multipart/form-data by uploadinг files
+- multer to handle multipart/form-data by uploading files
 - sharp transforming pictures to thumbnails
 - express-zip to make zip archive from pictures and send it back via API
 - exifr to read EXIF information from uploaded pictures
@@ -64,6 +76,7 @@ status - 200
   }
 }
 ```
+
 2. <p><b>search and retrieve pictures</b></p>
    post request to http://localhost:4000/search <br>
    Content-Type - application/json <br>
@@ -108,7 +121,8 @@ successfully response status - 200
   "archive": true
 }
 ```
-when the parameter "archive: true" you will receive as response one zip file that will be contained all images and their thumbnails 
+
+when "archive: true" you will receive a response - one zip file that will be contained all images and their thumbnails
 ![insomnia](screen-download.png)
 
 3.<b> delete picture</b>
