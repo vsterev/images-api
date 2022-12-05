@@ -22,16 +22,16 @@ in case using npm
 npm install
 ```
 
-if folder uploads doesn't exists, create it using
+check if folder "uploads" exists in project directory, if not please create it using
 
 ```bash
+cd images-api
 mkdir uploads
 ```
 
 <b>to run </b>
 
 ```bash
-cd images-api
 yarn start
 ```
 

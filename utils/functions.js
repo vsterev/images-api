@@ -11,6 +11,7 @@ module.exports = {
       const { filename, originalname, path, mimetype, size } = info;
       const findImage = await imageModel.findOne({ originalname });
       if (!!findImage) {
+        const deleteImage = await fs.promises.unlink(path);
         return res.status(202).json(`image with name ${originalname} already exists`);
       }
       const { latitude, longitude } = await exifr.gps(imagesPath + filename);
