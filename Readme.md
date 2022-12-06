@@ -202,7 +202,7 @@ status - 500
 { "error": "Could not delete file Image 1670150531413-DJI_08451.JPG" }
 ```
 
-### Рegarding issues related to the network load and the possible future load of the database can offer the following architectural solutions:
+### Regarding issues related to the network load and the possible future load of the database can offer the following architectural solutions:
 
 1. In cases where the database becomes too large, sharding clusters can be made. Sharding is a method for distributing data across multiple machines. MongoDB uses sharding to support very large data sets. Sharding will improve response time, avoid service outage and scale efficiently - it is possible to add new shards at runtime without shutting down the application for maintenance.
 
