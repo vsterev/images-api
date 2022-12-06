@@ -109,6 +109,7 @@ status - 500
 - archive - boolean if is set to true receive zipped file with all images in it, if is set to false, receive an array of images paths
 
 response staus if image doesn't exists - 404 <br>
+
 ```json
 { "error": "No images found" }
 ```
@@ -126,7 +127,8 @@ successfully response status - 200
 ```
 
 - this request will searched by latitude and longitude and will return array of paths to images
-request:
+  request:
+
 ```json
 {
   "latitudeMin": 19.9517,
@@ -136,20 +138,21 @@ request:
   "archive": false
 }
 ```
+
 response:
 status - 200
+
 ```json
 {
-	"fileNames": [
-		"1670155698465-DJI_0848.JPG",
-		"thumb-1670155698465-DJI_0848.JPG",
-		"1670155705035-DJI_0852.JPG",
-		"thumb-1670155705035-DJI_0852.JPG",
-		"1670189886898-DJI_0847.JPG",
-		"thumb-1670189886898-DJI_0847.JPG"
-	]
+  "fileNames": [
+    "1670155698465-DJI_0848.JPG",
+    "thumb-1670155698465-DJI_0848.JPG",
+    "1670155705035-DJI_0852.JPG",
+    "thumb-1670155705035-DJI_0852.JPG",
+    "1670189886898-DJI_0847.JPG",
+    "thumb-1670189886898-DJI_0847.JPG"
+  ]
 }
-
 ```
 
 - this request will return all saved images in zip archive
@@ -159,6 +162,7 @@ status - 200
   "archive": true
 }
 ```
+
 status - 200
 when "archive: true" you will receive a response - one zip file that will be contained all images and their thumbnails
 ![insomnia](screen-download.png)
@@ -197,3 +201,10 @@ status - 500
 ```json
 { "error": "Could not delete file Image 1670150531413-DJI_08451.JPG" }
 ```
+
+### Рegarding issues related to the network load and the possible future load of the database can offer the following architectural solutions:
+
+1. In cases where the database becomes too large, sharding clusters can be made. Sharding is a method for distributing data across multiple machines. MongoDB uses sharding to support very large data sets. Sharding will improve response time, avoid service outage and scale efficiently - it is possible to add new shards at runtime without shutting down the application for maintenance.
+
+2. If the traffic to the server becomes too much, a load balancer can be used to distributes a incoming network traffic between server pool.
+   A load balancer is sitting in front of application servers and routing client requests across all servers capable of fulfilling those requests in a manner that maximizes speed and capacity utilization.
